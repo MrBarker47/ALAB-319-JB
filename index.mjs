@@ -13,6 +13,14 @@ app.get('/', (req, res) => {
     res.send("Welcome to the API.");
 })
 
+app.get('/grades/stats', (req, res) => {
+
+})
+
+app.get('/grades/stats/:id', (req, res) => {
+    
+})
+
 app.use('/grades', grades);
 app.use('/grades', grades_agg);
 
