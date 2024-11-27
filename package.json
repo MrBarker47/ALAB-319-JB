@@ -13,7 +13,8 @@
     "express": "^4.21.1",
     "express-async-errors": "^3.1.1",
     "killport": "^1.0.2",
-    "mongodb": "^6.11.0"
+    "mongodb": "^6.11.0",
+    "prettier": "^3.4.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
