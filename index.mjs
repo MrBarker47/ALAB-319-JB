@@ -14,11 +14,22 @@ app.get('/', (req, res) => {
 })
 
 app.get('/grades/stats', (req, res) => {
-
+    db.grades.aggregate([
+        {
+            '$project': {
+                '_id': 0,
+                'learner_id': 1,
+                'class_id': 1,
+                'avg': {
+                    '$avg': '$scores.score'
+                }
+            }
+        }
+    ])
 })
 
 app.get('/grades/stats/:id', (req, res) => {
-    
+
 })
 
 app.use('/grades', grades);
