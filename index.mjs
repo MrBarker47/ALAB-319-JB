@@ -13,19 +13,18 @@ app.get('/', (req, res) => {
     res.send("Welcome to the API.");
 })
 
-app.get('/grades/stats', (req, res) => {
-    db.grades.aggregate([
+app.get('/grades/stats', async (req, res) => {
+    let collection = await db.collection("grades");
+
+    let result = await collectionollection.aggregate([
         {
-            '$project': {
-                '_id': 0,
-                'learner_id': 1,
-                'class_id': 1,
-                'avg': {
-                    '$avg': '$scores.score'
-                }
-            }
+            $match: { class_id: 300}
+        },{
+            $count: "numberOfEntries"
         }
-    ])
+    ]).toArray();
+    
+    res.send(result);
 })
 
 app.get('/grades/stats/:id', (req, res) => {
