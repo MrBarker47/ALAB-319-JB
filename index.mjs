@@ -30,12 +30,40 @@ app.get('/grades/stats', async (req, res) => {
 
 app.get('/grades/stats/:id', async (req, res) => {
     db.learners.createIndex({
-        class_id: 1
+        class_id: 1,
+        learner_id:1
     })
-    db.learners.createIndex({
-        learner_id: 1,
-    });
-    
+  
+    db.learner.insertMany([
+        {
+            "_id": {
+              "$oid": "56d5f7eb604eb380b0d8d8d1"
+            },
+            "class_id": 39,
+            "avg": 37.21718277096397
+          },
+          {
+            "_id": {
+              "$oid": "56d5f7eb604eb380b0d8d8d8"
+            },
+            "class_id": 325,
+            "avg": 55.7420630185875
+          },
+          {
+            "_id": {
+              "$oid": "56d5f7eb604eb380b0d8d8dc"
+            },
+            "class_id": 265,
+            "avg": 63.373517441303505
+          },
+          {
+            "_id": {
+              "$oid": "56d5f7eb604eb380b0d8d8e6"
+            },
+            "class_id": 435,
+            "avg": 59.60961413675004
+          }
+    ])
 
    
 })
