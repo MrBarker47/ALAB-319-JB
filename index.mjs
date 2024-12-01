@@ -1,4 +1,5 @@
 import express from "express"
+import mongoose from "mongoose";
 
 
 const PORT = 5050;
@@ -9,12 +10,20 @@ import grades_agg from "./routes/grades_agg.mjs";
 
 app.use(express.json());
 
+
+// Connecting my mongoose
+await mongoose.connect(process.env.MONGODB_URI)
+
 app.get('/', (req, res) => {
     res.send("Welcome to the API.");
 })
 
 app.get('/grades/stats', async (req, res) => {
-    let collection = await db.collection("grades");
+ 
+
+    const newSchema = new mongoose.Schema({
+
+    })
 
     let result = await collection.aggregate([
         {
@@ -29,6 +38,12 @@ app.get('/grades/stats', async (req, res) => {
 })
 
 app.get('/grades/stats/:id', async (req, res) => {
+     let newCollection = await db.collection("grades");
+
+     const newSchema = new mongoose.Schema({
+
+     })
+
     db.learners.createIndex({
         class_id: 1,
         learner_id:1

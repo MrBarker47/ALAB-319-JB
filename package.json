@@ -14,6 +14,7 @@
     "express-async-errors": "^3.1.1",
     "killport": "^1.0.2",
     "mongodb": "^6.11.0",
+    "mongoose": "^8.8.3",
     "prettier": "^3.4.1"
   },
   "devDependencies": {
