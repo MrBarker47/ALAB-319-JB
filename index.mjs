@@ -29,11 +29,15 @@ app.get('/grades/stats', async (req, res) => {
 })
 
 app.get('/grades/stats/:id', async (req, res) => {
-    let newCollection = await db.learners("grades");
-
-    let result = await newCollection.aggregate([
+    db.learners.createIndex({
+        class_id: 1
+    })
+    db.learners.createIndex({
+        learner_id: 1,
+    });
     
-    ])
+
+   
 })
 
 app.use('/grades', grades);
