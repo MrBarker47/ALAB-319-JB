@@ -16,19 +16,24 @@ app.get('/', (req, res) => {
 app.get('/grades/stats', async (req, res) => {
     let collection = await db.collection("grades");
 
-    let result = await collectionollection.aggregate([
+    let result = await collection.aggregate([
         {
-            $match: { class_id: 300}
-        },{
-            $count: "numberOfEntries"
-        }
-    ]).toArray();
-    
-    res.send(result);
+            title: 1,
+            learner_id: 2,
+            class_id: 1,
+            avg: {
+              $avg: "$scores.score",
+            },
+          }
+    ])
 })
 
-app.get('/grades/stats/:id', (req, res) => {
+app.get('/grades/stats/:id', async (req, res) => {
+    let newCollection = await db.learners("grades");
 
+    let result = await newCollection.aggregate([
+    
+    ])
 })
 
 app.use('/grades', grades);
